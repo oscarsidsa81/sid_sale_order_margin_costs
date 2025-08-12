@@ -19,7 +19,7 @@
                 <!--botones y acciones, y smart buttons sale.form-->
 
                 <!-- Confirmar (con costes adicionales definidos) -->
-                <xpath expr="//form/header/button[@name='action_confirm']" position="replace">
+                <xpath expr="//form[1]/header[1]/button[@name='action_confirm'][2]" position="replace">
                     <button name="action_confirm"
                             type="object"
                             class="btn-primary"
