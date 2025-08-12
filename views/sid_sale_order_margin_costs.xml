@@ -7,7 +7,7 @@
             <field name="name">sid_sale_order_margin_costs.form</field>
             <field name="model">sale.order</field>
             <field name="priority" eval="3002"/>
-            <field name="inherit_id" ref="sale.order.form"/>
+            <field name="inherit_id" ref="sale.view_order_form"/>
             <field name="arch" type="xml">
                 <xpath expr="/form[1]/sheet[1]/group[1]/group[2]/field[@name='gross_margin']" position="replace"/>
                 <xpath expr="//field[@name='tax_totals_json']" position="after">
