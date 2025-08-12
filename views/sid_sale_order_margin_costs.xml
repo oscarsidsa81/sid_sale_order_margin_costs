@@ -25,7 +25,7 @@
                             class="btn-primary"
                             string="Confirmar"
                             data-hotkey="v"
-                            attrs="{'invisible': [('state','not in',['draft','sent']), ('costes_adicionales','&lt;=',0)]}"
+                            attrs="{'invisible': ['|',('state','not in',['draft','sent']), ('costes_adicionales','&lt;=',0)]}"
                             confirm="¿Está seguro de confirmar el pedido? No ha definido costes adicionales."/>
                     <!-- Confirmar (sin costes adicionales definidos) -->
                     <button name="action_confirm"
@@ -33,13 +33,19 @@
                             class="btn-primary"
                             string="Confirmar"
                             data-hotkey="v"
-                            attrs="{'invisible': [('state','not in',['draft','sent']), ('costes_adicionales','&gt;',0)]}"
+                            attrs="{'invisible': ['|',('state','not in',['draft','sent']), ('costes_adicionales','&gt;',0)]}"
                             confirm="¿Está seguro de confirmar el pedido?"/>
                 </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
 
-                <!-- Cancelar con textos distintos según estado -->
+
+<!-- METER EN OTRA FUNCIÓN DE CANCELACIONES JUNTO CON LÍNEAS DE VENTA Y COMPRA
+                &lt;!&ndash; Cancelar con textos distintos según estado &ndash;&gt;
                 <xpath expr="//form/header/button[@name='action_cancel']" position="replace">
-                    <!-- Cancelar oferta (borrador/enviada) -->
+                    &lt;!&ndash; Cancelar oferta (borrador/enviada) &ndash;&gt;
                     <button name="action_cancel"
                             type="object"
                             string="Cancelar"
@@ -47,7 +53,7 @@
                             attrs="{'invisible': [('state','not in',['draft','sent'])]}"
                             confirm="¿Está seguro de cancelar el pedido? Recuerde que, si hay movimientos de stock confirmados o
             facturas emitidas, no debe cancelar hasta devolver las unidades o rectificar las facturas."/>
-                    <!-- Cancelar pedido confirmado -->
+                    &lt;!&ndash; Cancelar pedido confirmado &ndash;&gt;
                     <button name="action_cancel"
                             type="object"
                             string="Cancelar"
@@ -55,8 +61,4 @@
                             attrs="{'invisible': [('state','!=','sale')]}"
                             confirm="¿Está seguro de cancelar esta oferta?"/>
                 </xpath>
-
-            </field>
-        </record>
-    </data>
-</odoo>
+-->
