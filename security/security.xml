@@ -1,0 +1,5 @@
+<odoo>
+    <data noupdate="1">
+        <!-- Aquí puedes definir grupos y reglas de seguridad -->
+    </data>
+</odoo>

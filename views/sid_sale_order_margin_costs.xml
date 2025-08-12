@@ -1,0 +1,62 @@
+<odoo>
+    <data>
+
+        <!--SALE ORDER - FORM 	model="ir.ui.view" 	sale.order.form márgen y costes adicionales-->
+
+        <record id="sid_sale_order_margin_costs.form" model="ir.ui.view">
+            <field name="name">sid_sale_order_margin_costs.form</field>
+            <field name="model">sale.order</field>
+            <field name="priority" eval="3002"/>
+            <field name="inherit_id" ref="sale.order.form"/>
+            <field name="arch" type="xml">
+                <xpath expr="/form[1]/sheet[1]/group[1]/group[2]/field[@name='gross_margin']" position="replace"/>
+                <xpath expr="//field[@name='tax_totals_json']" position="after">
+                    <field name="costes_adicionales" string="Costes adicionales"
+                           attrs="{'readonly': [('state', 'not in', ['draft', 'sent'])]}"/>
+                    <field name="margen_neto" string="Margen neto" widget="percentage"/>
+                </xpath>
+
+                <!--botones y acciones, y smart buttons sale.form-->
+
+                <!-- Confirmar (con costes adicionales definidos) -->
+                <xpath expr="//form/header/button[@name='action_confirm']" position="replace">
+                    <button name="action_confirm"
+                            type="object"
+                            class="btn-primary"
+                            string="Confirmar"
+                            data-hotkey="v"
+                            attrs="{'invisible': ['|', ('state','not in',['draft','sent']), ('costes_adicionales','<=',0)]}"
+                            confirm="¿Está seguro de confirmar el pedido? No ha definido costes adicionales."/>
+                    <!-- Confirmar (sin costes adicionales definidos) -->
+                    <button name="action_confirm"
+                            type="object"
+                            class="btn-primary"
+                            string="Confirmar"
+                            data-hotkey="v"
+                            attrs="{'invisible': ['|', ('state','not in',['draft','sent']), ('costes_adicionales','>',0)]}"
+                            confirm="¿Está seguro de confirmar el pedido?"/>
+                </xpath>
+
+                <!-- Cancelar con textos distintos según estado -->
+                <xpath expr="//form/header/button[@name='action_cancel']" position="replace">
+                    <!-- Cancelar oferta (borrador/enviada) -->
+                    <button name="action_cancel"
+                            type="object"
+                            string="Cancelar"
+                            data-hotkey="z"
+                            attrs="{'invisible': [('state','not in',['draft','sent'])]}"
+                            confirm="¿Está seguro de cancelar el pedido? Recuerde que, si hay movimientos de stock confirmados o
+            facturas emitidas, no debe cancelar hasta devolver las unidades o rectificar las facturas."/>
+                    <!-- Cancelar pedido confirmado -->
+                    <button name="action_cancel"
+                            type="object"
+                            string="Cancelar"
+                            data-hotkey="z"
+                            attrs="{'invisible': [('state','!=','sale')]}"
+                            confirm="¿Está seguro de cancelar esta oferta?"/>
+                </xpath>
+
+            </field>
+        </record>
+    </data>
+</odoo>
