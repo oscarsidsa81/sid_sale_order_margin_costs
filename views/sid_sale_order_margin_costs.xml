@@ -14,10 +14,13 @@
                            attrs="{'readonly': [('state', 'not in', ['draft', 'sent'])]}"/>
                     <field name="margen_neto" string="Margen neto" widget="percentage"/>
                 </xpath>
+                <!-- Elimina el botón “Confirm” que solo aparece en SENT -->
+                <xpath expr="//form/header/button[@name='action_confirm' and contains(@attrs, &quot;'sent'&quot;)]"
+                       position="replace"/>
 
-                <!-- 1) Quitar TODOS los botones Confirmar originales -->
-                <xpath expr="//header/button[@name='action_confirm']" position="replace"/>
-
+                <!-- Elimina el botón “Confirm” que solo aparece en DRAFT -->
+                <xpath expr="//form/header/button[@name='action_confirm' and contains(@attrs, &quot;'draft'&quot;)]"
+                       position="replace"/>
                 <!-- 2) Añadir nuestras dos variantes -->
                 <xpath expr="//header" position="inside">
                     <!-- Con costes (visible si state in draft/sent Y costes > 0) -->
