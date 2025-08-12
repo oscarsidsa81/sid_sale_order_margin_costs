@@ -1,6 +1,6 @@
 {
     'name': 'sid_sale_order_margin_costs',
-    'version': '1.0',
+    'version': '1.1',
     'category': 'Sales',
     'license': 'AGPL-3',
     'summary': 'Campos en vista form para visualizar margen neto tras costes adicionales no reflejados en líneas de venta',

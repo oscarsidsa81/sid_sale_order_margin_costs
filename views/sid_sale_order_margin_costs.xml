@@ -25,7 +25,7 @@
                             class="btn-primary"
                             string="Confirmar"
                             data-hotkey="v"
-                            attrs="{'invisible': ['|', ('state','not in',['draft','sent']), ('costes_adicionales','<=',0)]}"
+                            attrs="{'invisible': [('state','not in',['draft','sent']), ('costes_adicionales','<=',0)]}"
                             confirm="¿Está seguro de confirmar el pedido? No ha definido costes adicionales."/>
                     <!-- Confirmar (sin costes adicionales definidos) -->
                     <button name="action_confirm"
@@ -33,7 +33,7 @@
                             class="btn-primary"
                             string="Confirmar"
                             data-hotkey="v"
-                            attrs="{'invisible': ['|', ('state','not in',['draft','sent']), ('costes_adicionales','>',0)]}"
+                            attrs="{'invisible': [('state','not in',['draft','sent']), ('costes_adicionales','>',0)]}"
                             confirm="¿Está seguro de confirmar el pedido?"/>
                 </xpath>
 
