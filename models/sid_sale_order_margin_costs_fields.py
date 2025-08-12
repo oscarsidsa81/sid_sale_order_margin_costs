@@ -6,7 +6,6 @@ class SaleOrder(models.Model):
     margen_neto = fields.Float(
         string="Margen Neto",
         compute="_compute_margen_neto",
-        help="Base imponible que queda por entregar",
         store=True,
         readonly=True,
         digits=(16,4),
