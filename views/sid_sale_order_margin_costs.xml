@@ -9,7 +9,6 @@
             <field name="priority" eval="3002"/>
             <field name="inherit_id" ref="sale.view_order_form"/>
             <field name="arch" type="xml">
-                <xpath expr="/form[1]/sheet[1]/group[1]/group[2]/field[@name='gross_margin']" position="replace"/>
                 <xpath expr="//field[@name='tax_totals_json']" position="after">
                     <field name="costes_adicionales" string="Costes adicionales"
                            attrs="{'readonly': [('state', 'not in', ['draft', 'sent'])]}"/>
