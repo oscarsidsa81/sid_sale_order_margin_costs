@@ -15,34 +15,35 @@
                     <field name="margen_neto" string="Margen neto" widget="percentage"/>
                 </xpath>
 
-                <!--botones y acciones, y smart buttons sale.form-->
+                <!-- 1) Quitar TODOS los botones Confirmar originales -->
+                <xpath expr="//header/button[@name='action_confirm']" position="replace"/>
 
-                <!-- Confirmar (con costes adicionales definidos) -->
-                <xpath expr="//header/button[@name='action_confirm']" position="replace">
-                    <!-- Mostrar SOLO si state ∈ ['draft','sent'] y hay costes > 0 -->
+                <!-- 2) Añadir nuestras dos variantes -->
+                <xpath expr="//header" position="inside">
+                    <!-- Con costes (visible si state in draft/sent Y costes > 0) -->
                     <button name="action_confirm"
                             type="object"
                             class="btn-primary"
                             string="Confirmar"
                             data-hotkey="v"
                             attrs="{'invisible': ['|',
-                ('state','not in',['draft','sent']),
-                ('costes_adicionales','&lt;=', 0)
-            ]}"
+                  ('state','not in',['draft','sent']),
+                  ('costes_adicionales','&lt;=', 0)
+              ]}"
                             confirm="¿Está seguro de confirmar el pedido?"/>
 
-                    <!-- Mostrar SOLO si state ∈ ['draft','sent'] y costes ≤ 0 -->
+                    <!-- Sin costes (visible si state in draft/sent Y costes ≤ 0) -->
                     <button name="action_confirm"
                             type="object"
                             class="btn-primary"
                             string="Confirmar"
+                            data-hotkey="v"
                             attrs="{'invisible': ['|',
-                ('state','not in',['draft','sent']),
-                ('costes_adicionales','&gt;', 0)
-            ]}"
+                  ('state','not in',['draft','sent']),
+                  ('costes_adicionales','&gt;', 0)
+              ]}"
                             confirm="¿Está seguro de confirmar el pedido? No ha definido costes adicionales."/>
                 </xpath>
-
             </field>
         </record>
     </data>
