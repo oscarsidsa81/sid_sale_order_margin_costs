@@ -1,10 +1,12 @@
 {
     'name': 'sid_sale_order_margin_costs',
-    'version': '1.1',
+    'version': '1.0.0',
     'category': 'Sales',
     'license': 'AGPL-3',
-    'summary': 'Campos en vista form para visualizar margen neto tras costes adicionales no reflejados en líneas de venta',
-    'description': 'Campos en vista form para visualizar margen neto tras costes adicionales no reflejados en líneas de venta',
+    'summary': 'Campos en vista tree "Pedidos para control de facturación',
+    'description': 'Campos calculados a partir de líneas de ventas y productos'
+                   ' concretos para separar las diferentes carteras de '
+                   'facturación de un contrato o pedido',
     'author': 'oscarsidsa81',
     'depends': ['base','sale_management'],
     'data': [
